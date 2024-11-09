@@ -8,27 +8,4 @@ namespace WebApiC.Controllers;
 [ApiController]
 public class TodoController(TodoService todoService) : ControllerBase
 {
-    [HttpGet]
-    public List<Todo> GetTodos()
-    {
-        return todoService.ReturnTodos();
-    }
-
-    [HttpGet("{id}")]
-    public Todo Get(int id)
-    {
-        return todoService.GetTodoById(id);
-    }
-    
-    [HttpPost]
-    public Todo Post([FromBody] RequestTodo todo)
-    {
-        return todoService.AddTodoItem(todo.Title, todo.IsComplete);
-    }
-    
-    [HttpPut("{id}")]
-    public Todo Put(int id, [FromBody] RequestTodo todo)
-    {
-        return todoService.UpdateTodoItem(id, todo.Title, todo.IsComplete);
-    }
 }
