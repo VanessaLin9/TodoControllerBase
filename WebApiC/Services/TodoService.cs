@@ -8,7 +8,8 @@ public class TodoService
     [
         Todo.CreatTodo(1, "Talk With Ann", DateOnly.FromDateTime(DateTime.Now), true),
         Todo.CreatTodo(2, "Buy Some Drink"),
-        Todo.CreatTodo(3, "Finish Homework", DateOnly.FromDateTime(DateTime.Now.AddDays(2)))
+        Todo.CreatTodo(3, "Finish Homework", DateOnly.FromDateTime(DateTime.Now.AddDays(2))),
+        Todo.CreatTodo(4, "vanessa extension method")
     ];
 
 
@@ -55,5 +56,17 @@ public class TodoService
     {
         var selected = _sampleList.Where(x => x.Title!.Contains(title)).ToList();
         return selected.Count != 0 ? _sampleList : selected;
+    }
+
+    public List<Todo> GetTagTodo(string who)
+    {
+        return _sampleList.WhereTagMe(who).ToList();
+    }
+}
+
+public static class VanessaExtension{
+    public static IEnumerable<Todo> WhereTagMe(this IEnumerable<Todo> todoList, string person)
+    {
+        return todoList.Where(x => x.Title!.Contains(person)).ToList();
     }
 }

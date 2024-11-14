@@ -59,4 +59,10 @@ public class TodoController(TodoService todoService) : ControllerBase
         return string.IsNullOrEmpty(title) ? todoService.GetAllTodo() : todoService.GetFilteredTodo(title);
     }
 
+    [HttpGet("/searchMe")]
+    public List<Todo> GetTagTodos(string who)
+    {
+        return todoService.GetTagTodo(who);
+    }
+
 }
