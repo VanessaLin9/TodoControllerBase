@@ -62,6 +62,11 @@ public class TodoService
     {
         return _sampleList.WhereTagMe(who).ToList();
     }
+
+    public Todo GetTodoById(int id)
+    {
+        return _sampleList.FirstOrDefault(x=> x.Id == id)!;
+    }
 }
 
 public static class VanessaExtension{

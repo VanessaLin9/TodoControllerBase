@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using WebApiC.Models;
 using WebApiC.Services;
@@ -19,12 +20,22 @@ public class TodoController(TodoService todoService) : ControllerBase
 
 // 1. 使用 Controller base 來實作一個 POST API /todos 透過 body 可以建立一個 todo
 
-    [HttpPost("/")]
-    public Todo PostTodo(Todo todo)
-    {
-        return todoService.AddTodo(todo);
-    }
+    // [HttpPost("/")]
+    // public Todo PostTodo(Todo todo)
+    // {
+    //     return todoService.AddTodo(todo);
+    // }
 
+    [HttpGet("/{id}")]
+    public Todo? GetTodoById(int id)
+    {
+        var todoById = todoService.GetTodoById(id);
+
+        return todoById;
+        Response.StatusCode = (int) HttpStatusCode.NotFound;
+        return null;
+    }
+    
 // 2. 使用 Controller base 來實作一個 PUT API /todos/{id} 加上 body 可以修改特定一個 todo 的內容
 
     [HttpPut("/{id}")]
@@ -42,16 +53,16 @@ public class TodoController(TodoService todoService) : ControllerBase
 
 // 4. 使用 Controller base 來實作一個 POST API /todos?title={title}&dueby={dueby}&iscomplete={iscomplete} 不透過 body, 反而透過 query 來建立一個 todo 內容
 
-    // [HttpPost("/")]
-    // public Todo PostTodoByQuery(string title, string dueBy, bool isComplete)
-    // {
-    //     return todoService.AddTodo(new Todo
-    //     {
-    //         Title = title,
-    //         DueBy = DateOnly.ParseExact(dueBy, "yyyy-mm-dd"),
-    //         IsComplete = isComplete
-    //     });
-    // }
+    [HttpPost("/")]
+    public Todo PostTodoByQuery(string title, string? dueBy, bool? isComplete = false)
+    {
+        return todoService.AddTodo(new Todo
+        {
+            Title = title,
+            DueBy = DateOnly.ParseExact(dueBy, "yyyy-mm-dd"),
+            IsComplete = isComplete?? false
+        });
+    }
 // 5. 使用 Controller base 來實作一個 GET API /todos/search?title={title} 可以取得包含查詢條件的的 title
     [HttpGet("/search")]
     public List<Todo> FilerTodos(string title)
