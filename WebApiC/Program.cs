@@ -18,10 +18,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.MapControllers();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
 
 app.UseHttpsRedirection();
 
