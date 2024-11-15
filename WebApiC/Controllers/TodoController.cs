@@ -42,16 +42,16 @@ public class TodoController(TodoService todoService) : ControllerBase
 
 // 4. 使用 Controller base 來實作一個 POST API /todos?title={title}&dueby={dueby}&iscomplete={iscomplete} 不透過 body, 反而透過 query 來建立一個 todo 內容
 
-    [HttpPost("/")]
-    public Todo PostTodoByQuery(string title, string dueBy, bool isComplete)
-    {
-        return todoService.AddTodo(new Todo
-        {
-            Title = title,
-            DueBy = DateOnly.ParseExact(dueBy, "yyyy-mm-dd"),
-            IsComplete = isComplete
-        });
-    }
+    // [HttpPost("/")]
+    // public Todo PostTodoByQuery(string title, string dueBy, bool isComplete)
+    // {
+    //     return todoService.AddTodo(new Todo
+    //     {
+    //         Title = title,
+    //         DueBy = DateOnly.ParseExact(dueBy, "yyyy-mm-dd"),
+    //         IsComplete = isComplete
+    //     });
+    // }
 // 5. 使用 Controller base 來實作一個 GET API /todos/search?title={title} 可以取得包含查詢條件的的 title
     [HttpGet("/search")]
     public List<Todo> FilerTodos(string title)
