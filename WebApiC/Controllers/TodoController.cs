@@ -11,9 +11,15 @@ public class TodoController(TodoService todoService) : ControllerBase
 
     [HttpGet]
     [Route("/")]
-    public List<Todo> GetAllTodos()
+    public List<Todo?> GetAllTodos()
     {
         return todoService.GetAllTodo();
+    }
+
+    [HttpGet("/{id:int}")]
+    public Todo? GetTodoById(int id)
+    {
+        return todoService.GetTodoById(id);
     }
 
 
