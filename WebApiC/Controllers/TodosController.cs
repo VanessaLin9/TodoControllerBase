@@ -39,9 +39,9 @@ public class TodosController(TodoService todoService) : ControllerBase
 // 7. 使用 Controller base 來實作一個 PUT API /todos/{id} 加上 body 可以修改特定一個 todo 的內容
 
     [HttpPut("/{id:int}")]
-public Todo? UpdateTodoById(int id, Todo todo)
+public List<Todo>? UpdateTodoById(int id, Todo todo)
 {
-    if (!CheckTodoExist(id)) return todoService.UpdateTodoById(id, todo);
+    if (!CheckTodoExist(id)) return todoService.UpdateTodoById(id, todo)!;
     HttpContext.Response.StatusCode = 404;
     return null;
 

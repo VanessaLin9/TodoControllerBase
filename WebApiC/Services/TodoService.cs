@@ -31,18 +31,17 @@ public class TodoService
         return newTodo;
     }
 
-    public Todo? UpdateTodoById(int id, Todo todo)
+    public List<Todo?> UpdateTodoById(int id, Todo todo)
     {
-        var modifyTodo = _sampleList.FirstOrDefault(x => x.Id ==id);
-        if (modifyTodo is null)
+        var index = _sampleList.FindIndex(x => x.Id ==id);
+        if (index == -1)
         {
             return null;
         }
 
-        modifyTodo = modifyTodo with { Title = todo.Title };
-        modifyTodo = modifyTodo with { DueBy = todo.DueBy };
-        modifyTodo = modifyTodo with { IsComplete = todo.IsComplete };
-        return modifyTodo;
+        _sampleList[index] = todo; 
+        _sampleList[index] = _sampleList[index]! with {Id = id};
+        return _sampleList;
     }
 
     public List<Todo>? DeleteTodoById(int id)
