@@ -34,13 +34,8 @@ public class TodoService
     public List<Todo?> UpdateTodoById(int id, Todo todo)
     {
         var index = _sampleList.FindIndex(x => x.Id ==id);
-        if (index == -1)
-        {
-            return null;
-        }
 
-        _sampleList[index] = todo; 
-        _sampleList[index] = _sampleList[index]! with {Id = id};
+        _sampleList[index] = todo with { Id = id };
         return _sampleList;
     }
 
