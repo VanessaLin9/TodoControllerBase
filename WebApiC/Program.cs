@@ -1,10 +1,14 @@
+using WebApiC.Models;
 using WebApiC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(option =>
+{
+    option.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+});
 
 builder.Services.AddSingleton<TodoService>();
 
