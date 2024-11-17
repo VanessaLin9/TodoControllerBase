@@ -1,1 +1,16 @@
 /.idea/.idea.WebApiC/.idea/git_toolbox_blame.xml
+
+# 編譯產物
+bin/
+obj/
+*.dll
+*.pdb
+
+# IDE 配置文件
+.idea/
+*.iml
+*.csproj.user
+rider.project.restore.info
+
+# 其他臨時文件
+*.log
