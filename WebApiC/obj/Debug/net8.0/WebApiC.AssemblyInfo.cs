@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebApiC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+999db601dfd3abbac51585ff40b66b3ea1aba905")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebApiC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebApiC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

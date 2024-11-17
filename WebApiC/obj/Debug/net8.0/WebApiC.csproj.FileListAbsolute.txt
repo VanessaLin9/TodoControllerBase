@@ -31,3 +31,5 @@
 /Users/vanessa.lin22/vv/WebApiC/WebApiC/obj/Debug/net8.0/WebApiC.pdb
 /Users/vanessa.lin22/vv/WebApiC/WebApiC/obj/Debug/net8.0/WebApiC.genruntimeconfig.cache
 /Users/vanessa.lin22/vv/WebApiC/WebApiC/obj/Debug/net8.0/ref/WebApiC.dll
+/Users/vanessa.lin22/vv/WebApiC/WebApiC/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/vanessa.lin22/vv/WebApiC/WebApiC/obj/Debug/net8.0/WebApiC.sourcelink.json
