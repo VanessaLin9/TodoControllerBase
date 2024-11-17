@@ -8,7 +8,8 @@ public class TodoService
     [
         new(1, "Talk With Ann", DateOnly.FromDateTime(DateTime.Now), true),
         new(2, "Buy Some Drink"),
-        new(3, "Finish Homework", DateOnly.FromDateTime(DateTime.Now.AddDays(2)))
+        new(3, "Finish Homework", DateOnly.FromDateTime(DateTime.Now.AddDays(2))),
+        new(4, "Go To The Gym"),
     ];
 
 
@@ -20,5 +21,43 @@ public class TodoService
     public Todo? GetTodoById(int id)
     {
         return _sampleList.FirstOrDefault(x => x!.Id == id);
+    }
+
+    public Todo AddTodo(Todo todo)
+    {
+        var id = _sampleList.Max(x => x!.Id) + 1;
+        var newTodo = new Todo(id, todo.Title, todo.DueBy, todo.IsComplete);
+        _sampleList.Add(newTodo);
+        return newTodo;
+    }
+
+    public Todo? UpdateTodoById(int id, Todo todo)
+    {
+        var modifyTodo = _sampleList.FirstOrDefault(x => x.Id ==id);
+        if (modifyTodo is null)
+        {
+            return null;
+        }
+
+        modifyTodo = modifyTodo with { Title = todo.Title };
+        modifyTodo = modifyTodo with { DueBy = todo.DueBy };
+        modifyTodo = modifyTodo with { IsComplete = todo.IsComplete };
+        return modifyTodo;
+    }
+
+    public List<Todo>? DeleteTodoById(int id)
+    {
+        _sampleList.Remove(_sampleList.FirstOrDefault(x => x!.Id == id));
+        return _sampleList!;
+    }
+
+    public Todo AddTodoByQuery(Todo todo)
+    {
+        return AddTodo(todo);
+    }
+
+    public List<Todo?> SearchTodoByTitle(string title)
+    {
+        return _sampleList.Where(x => x!.Title!.Contains(title, StringComparison.OrdinalIgnoreCase))!.ToList();
     }
 }
