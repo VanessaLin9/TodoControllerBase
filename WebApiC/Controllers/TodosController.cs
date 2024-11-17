@@ -73,7 +73,11 @@ public List<Todo>? DeleteTodoById(int id)
     public List<Todo>? SearchTodoByTitle(string title)
     {
         List<Todo>? searchTodoByTitle = todoService.SearchTodoByTitle(title)!;
-        HttpContext.Response.StatusCode = searchTodoByTitle.Count == 0 ? 204 : 200;
+        if (searchTodoByTitle.Count == 0)
+        {
+            HttpContext.Response.StatusCode = 204;
+            return null;
+        }
         return searchTodoByTitle;
     }
     private bool CheckTodoExist(int id)
