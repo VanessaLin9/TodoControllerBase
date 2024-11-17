@@ -259,3 +259,18 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# 編譯產物
+bin/
+obj/
+*.dll
+*.pdb
+
+# IDE 配置文件
+.idea/
+*.iml
+*.csproj.user
+rider.project.restore.info
+
+# 其他臨時文件
+*.log
