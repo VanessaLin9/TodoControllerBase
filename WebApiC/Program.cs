@@ -21,20 +21,16 @@ builder.Services.AddControllers().AddJsonOptions(option =>
 builder.Services.AddSingleton<TodoService>();
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
 }
 
 app.UseRouting();
 app.MapControllers();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
 
-app.UseHttpsRedirection();
+app.UseSwagger();
+app.UseSwaggerUI();
+// app.UseHttpsRedirection();
 
 app.Run();
