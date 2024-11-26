@@ -12,7 +12,7 @@ public class TodoService
     ];
 
 
-    public List<Todo>? GetAllTodo()
+    public List<Todo> GetAllTodo()
     {
         return _sampleList;
     }
