@@ -4,7 +4,7 @@ namespace WebApiC.Services;
 
 public class TodoService
 {
-    private List<Todo?> _sampleList =
+    private readonly List<Todo?> _sampleList =
     [
         new(1, "Talk With Ann", DateOnly.FromDateTime(DateTime.Now), true),
         new(2, "Buy Some Drink"),
@@ -26,14 +26,14 @@ public class TodoService
     public Todo AddTodo(Todo todo)
     {
         var id = _sampleList.Max(x => x!.Id) + 1;
-        var newTodo = new Todo(id, todo.Title, todo.DueBy, todo.IsComplete);
+        var newTodo = todo with { Id = id };
         _sampleList.Add(newTodo);
         return newTodo;
     }
 
     public List<Todo?> UpdateTodoById(int id, Todo todo)
     {
-        var index = _sampleList.FindIndex(x => x.Id ==id);
+        var index = _sampleList.FindIndex(x => x!.Id ==id);
 
         _sampleList[index] = todo with { Id = id };
         return _sampleList;
