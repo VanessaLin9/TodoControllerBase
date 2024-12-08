@@ -105,4 +105,8 @@ public class TodosController(TodoService todoService) : ControllerBase
         var todoById = todoService.GetTodoById(id);
         return todoById is null;
     }
+    // 16. 加入授權，未授權的使用者只能呼叫 GET 的方法
+    // 17. 通過授權的使用者才可以呼叫 GET 以外的方法
+    // 18. 如果未授權的使用者呼叫需要授權的 API 要有特定的例外被記錄在 log 中
+    // 19. 按照自己的需求撰寫測試
 }
